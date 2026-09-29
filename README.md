@@ -62,3 +62,8 @@ It demonstrates TypeScript types, file persistence, command-line parsing, array 
 ## 📄 License
 
 MIT. Use it, modify it and make it yours.
+
+
+## 🆕 Recent changes
+
+- Added a `stats` command with totals for pending, completed and high-priority tasks.
