@@ -66,4 +66,10 @@ MIT. Use it, modify it and make it yours.
 
 ## 🆕 Recent changes
 
+### 2026-10-04
+
+- Added `reopen <id>` to return a completed task to pending status.
+
+### Previous update
+
 - Added a `stats` command with totals for pending, completed and high-priority tasks.
