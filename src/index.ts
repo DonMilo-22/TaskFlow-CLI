@@ -17,6 +17,8 @@ TaskFlow CLI
   list [all|pending|done]
   done <id>
   delete <id>
+  reopen <id>
+  stats
   help
 `);
 }
@@ -49,7 +51,19 @@ switch (command) {
     if (!task) { console.error("Task not found."); process.exitCode = 1; break; }
     task.status = "done"; save(tasks); console.log(`✓ Completed #${id}`); break;
   }
-  case "stats": {\n    const pending = tasks.filter(t => t.status === "pending").length;\n    const done = tasks.filter(t => t.status === "done").length;\n    const high = tasks.filter(t => t.priority === "high" && t.status === "pending").length;\n    console.log(`Tasks: ${tasks.length} | Pending: ${pending} | Done: ${done} | High priority pending: ${high}`);\n    break;\n  }\n  case "delete": {
+  case "stats": {
+    const pending = tasks.filter(t => t.status === "pending").length;
+    const done = tasks.filter(t => t.status === "done").length;
+    const high = tasks.filter(t => t.priority === "high" && t.status === "pending").length;
+    console.log(`Tasks: ${tasks.length} | Pending: ${pending} | Done: ${done} | High priority pending: ${high}`);
+    break;
+  }
+  case "reopen": {
+    const task = tasks.find(t => t.id === Number(args[1]));
+    if (!task) { console.error("Task not found."); process.exitCode = 1; break; }
+    task.status = "pending"; save(tasks); console.log(`↺ Reopened #${task.id}`); break;
+  }
+  case "delete": {
     const id = Number(args[1]);
     const next = tasks.filter(t => t.id !== id);
     if (next.length === tasks.length) { console.error("Task not found."); process.exitCode = 1; break; }
