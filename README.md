@@ -66,6 +66,12 @@ MIT. Use it, modify it and make it yours.
 
 ## 🆕 Recent changes
 
+### 2026-10-05
+
+- Added `priority <id> <low|medium|high>` to change an existing task's priority.
+
+### 2026-10-04
+
 ### 2026-10-04
 
 - Added `reopen <id>` to return a completed task to pending status.
