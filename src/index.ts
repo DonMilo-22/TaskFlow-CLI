@@ -18,6 +18,7 @@ TaskFlow CLI
   done <id>
   delete <id>
   reopen <id>
+  priority <id> <low|medium|high>
   stats
   help
 `);
@@ -62,6 +63,12 @@ switch (command) {
     const task = tasks.find(t => t.id === Number(args[1]));
     if (!task) { console.error("Task not found."); process.exitCode = 1; break; }
     task.status = "pending"; save(tasks); console.log(`↺ Reopened #${task.id}`); break;
+  }
+  case "priority": {
+    const task = tasks.find(t => t.id === Number(args[1]));
+    const nextPriority = args[2] as Priority;
+    if (!task || !["low","medium","high"].includes(nextPriority)) { console.error("Use: priority <id> <low|medium|high>"); process.exitCode = 1; break; }
+    task.priority = nextPriority; save(tasks); console.log(`↕ Updated #${task.id} to ${nextPriority} priority`); break;
   }
   case "delete": {
     const id = Number(args[1]);
