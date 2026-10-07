@@ -20,6 +20,7 @@ TaskFlow CLI
   reopen <id>
   priority <id> <low|medium|high>
   stats
+  search <text>
   help
 `);
 }
@@ -69,6 +70,14 @@ switch (command) {
     const nextPriority = args[2] as Priority;
     if (!task || !["low","medium","high"].includes(nextPriority)) { console.error("Use: priority <id> <low|medium|high>"); process.exitCode = 1; break; }
     task.priority = nextPriority; save(tasks); console.log(`↕ Updated #${task.id} to ${nextPriority} priority`); break;
+  }
+  case "search": {
+    const query = args.slice(1).join(" ").trim().toLowerCase();
+    if (!query) { console.error("Use: search <text>"); process.exitCode = 1; break; }
+    const matches = tasks.filter(t => t.title.toLowerCase().includes(query));
+    if (!matches.length) { console.log("No matching tasks."); break; }
+    for (const t of matches) console.log(`${t.status === "done" ? "✓" : "○"} #${t.id} [${t.priority}] ${t.title}`);
+    break;
   }
   case "delete": {
     const id = Number(args[1]);
