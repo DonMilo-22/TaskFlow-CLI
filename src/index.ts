@@ -21,6 +21,7 @@ TaskFlow CLI
   priority <id> <low|medium|high>
   stats
   search <text>
+  clear-done
   help
 `);
 }
@@ -77,6 +78,13 @@ switch (command) {
     const matches = tasks.filter(t => t.title.toLowerCase().includes(query));
     if (!matches.length) { console.log("No matching tasks."); break; }
     for (const t of matches) console.log(`${t.status === "done" ? "✓" : "○"} #${t.id} [${t.priority}] ${t.title}`);
+    break;
+  }
+  case "clear-done": {
+    const remaining = tasks.filter(t => t.status !== "done");
+    const removed = tasks.length - remaining.length;
+    save(remaining);
+    console.log(`✓ Removed ${removed} completed task${removed === 1 ? "" : "s"}`);
     break;
   }
   case "delete": {
