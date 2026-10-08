@@ -66,6 +66,10 @@ MIT. Use it, modify it and make it yours.
 
 ## 🆕 Recent changes
 
+### 2026-10-07
+
+- Added `clear-done` to remove all completed tasks in one command.
+
 ### 2026-10-06
 
 - Added task search by title via `search <text>`.
