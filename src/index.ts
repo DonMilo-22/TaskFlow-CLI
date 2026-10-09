@@ -22,6 +22,7 @@ TaskFlow CLI
   stats
   search <text>
   clear-done
+  rename <id> <new title>
   help
 `);
 }
@@ -85,6 +86,15 @@ switch (command) {
     const removed = tasks.length - remaining.length;
     save(remaining);
     console.log(`✓ Removed ${removed} completed task${removed === 1 ? "" : "s"}`);
+    break;
+  }
+  case "rename": {
+    const task = tasks.find(t => t.id === Number(args[1]));
+    const title = args.slice(2).join(" ").trim();
+    if (!task || !title) { console.error("Use: rename <id> <new title>"); process.exitCode = 1; break; }
+    task.title = title;
+    save(tasks);
+    console.log(`✎ Renamed #${task.id}: ${title}`);
     break;
   }
   case "delete": {
