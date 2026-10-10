@@ -23,6 +23,7 @@ TaskFlow CLI
   search <text>
   clear-done
   rename <id> <new title>
+  list-priority <low|medium|high>
   help
 `);
 }
@@ -95,6 +96,14 @@ switch (command) {
     task.title = title;
     save(tasks);
     console.log(`✎ Renamed #${task.id}: ${title}`);
+    break;
+  }
+  case "list-priority": {
+    const priority = args[1] as Priority;
+    if (!["low","medium","high"].includes(priority)) { console.error("Use: list-priority <low|medium|high>"); process.exitCode = 1; break; }
+    const matches = tasks.filter(t => t.priority === priority);
+    if (!matches.length) { console.log("No tasks with that priority."); break; }
+    for (const t of matches) console.log(`${t.status === "done" ? "✓" : "○"} #${t.id} ${t.title}`);
     break;
   }
   case "delete": {
