@@ -66,6 +66,10 @@ MIT. Use it, modify it and make it yours.
 
 ## 🆕 Recent changes
 
+### 2026-10-09
+
+- Added `list-priority <low|medium|high>` to quickly view tasks by priority.
+
 ### 2026-10-08
 
 - Added `rename <id> <new title>` to change a task title without recreating it.
