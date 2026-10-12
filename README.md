@@ -1,95 +1,74 @@
-# ✅ TaskFlow CLI
+# TaskFlow CLI
 
-> A fast, dependency-light task manager for your terminal, built with TypeScript.
+Administrador local de tareas desde la terminal, desarrollado con TypeScript.
 
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
-![Node](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-green)
+Permite organizar pendientes con prioridad y conservarlos entre sesiones sin una cuenta ni una base de datos.
 
-TaskFlow CLI lets you create, list, complete and delete tasks without leaving the terminal. Tasks are saved locally in a JSON file, so your list survives between sessions.
+## Funciones actuales
 
-## ✨ Features
+- Crear, completar, reabrir, renombrar y eliminar tareas.
+- Cambiar prioridades y filtrar por estado o prioridad.
+- Buscar por título sin distinguir mayúsculas.
+- Consultar estadísticas y limpiar tareas completadas.
+- Persistencia en un archivo JSON local.
 
-- Add tasks with **low, medium or high priority**
-- List all tasks or filter by status
-- Mark tasks as completed
-- Delete tasks by ID
-- Persistent local JSON storage
-- Zero database setup
+## Requisitos
 
-## 🚀 Quick start
+Node.js 18 o superior y npm. El proyecto utiliza TypeScript 5.
+
+## Instalación y primer uso
 
 ```bash
+git clone https://github.com/DonMilo-22/TaskFlow-CLI.git
+cd TaskFlow-CLI
 npm install
 npm run build
-npm start -- add "Finish networking report" high
+npm start -- add "Estudiar redes" high
 npm start -- list
 ```
 
-## 🧭 Commands
+## Comandos
 
-| Command | Example | What it does |
+Todos se ejecutan con `npm start -- <comando>` después de compilar.
+
+| Comando | Ejemplo | Resultado |
 |---|---|---|
-| `add` | `npm start -- add "Study" high` | Creates a task |
-| `list` | `npm start -- list pending` | Shows tasks |
-| `done` | `npm start -- done 1` | Completes a task |
-| `delete` | `npm start -- delete 1` | Removes a task |
-| `help` | `npm start -- help` | Shows help |
+| `add <título> [prioridad]` | `add "Estudiar redes" high` | Crea una tarea; prioridad predeterminada `medium`. |
+| `list [all\|pending\|done]` | `list pending` | Lista tareas; sin filtro muestra todas. |
+| `done <id>` | `done 1` | Marca una tarea como completada. |
+| `reopen <id>` | `reopen 1` | Devuelve una tarea a pendientes. |
+| `rename <id> <título>` | `rename 1 "Repasar OSI"` | Cambia el título. |
+| `priority <id> <low\|medium\|high>` | `priority 1 low` | Cambia la prioridad. |
+| `list-priority <low\|medium\|high>` | `list-priority high` | Filtra por prioridad, incluyendo tareas completadas. |
+| `search <texto>` | `search redes` | Busca en los títulos. |
+| `stats` | `stats` | Muestra totales y pendientes de prioridad alta. |
+| `delete <id>` | `delete 1` | Elimina la tarea. |
+| `clear-done` | `clear-done` | Elimina todas las tareas completadas. |
+| `help` | `help` | Muestra la ayuda. |
 
-## 🗂️ Data
+## Ejemplo de salida
 
-TaskFlow creates `tasks.json` automatically in the project directory. No cloud account, API key or database is required.
-
-## 🧱 Structure
+Salida ilustrativa después de agregar la primera tarea:
 
 ```text
-src/
-  index.ts      # CLI and command handling
-package.json
-tsconfig.json
-.gitignore
+✓ Added #1: Estudiar redes [high]
+○ #1 [high] Estudiar redes
 ```
 
-## 🛠️ Requirements
+## Almacenamiento y límites
 
-- Node.js 18+
-- npm
+`tasks.json` se crea en el directorio de trabajo desde el que se ejecuta el proceso. Los ejemplos usan la raíz del repositorio. Eliminar ese archivo elimina la lista guardada. `delete` y `clear-done` no tienen papelera ni confirmación. No hay sincronización entre dispositivos.
 
-## 💡 Why this project?
+## Comprobaciones
 
-It demonstrates TypeScript types, file persistence, command-line parsing, array manipulation and a small clean application architecture.
+`npm run build` comprueba la compilación TypeScript. `npm start -- help` permite consultar los comandos disponibles. Estos comandos no constituyen una suite de pruebas automatizadas.
 
-## 📄 License
+## Autor y licencia
 
-MIT. Use it, modify it and make it yours.
+Desarrollado por [DonMilo-22](https://github.com/DonMilo-22).
 
+Licencia: MIT.
 
-## 🆕 Recent changes
+## Historial
 
-### 2026-10-09
-
-- Added `list-priority <low|medium|high>` to quickly view tasks by priority.
-
-### 2026-10-08
-
-- Added `rename <id> <new title>` to change a task title without recreating it.
-
-### 2026-10-07
-
-- Added `clear-done` to remove all completed tasks in one command.
-
-### 2026-10-06
-
-- Added task search by title via `search <text>`.
-
-### 2026-10-05
-
-- Added `priority <id> <low|medium|high>` to change an existing task's priority.
-
-### 2026-10-04
-
-- Added `reopen <id>` to return a completed task to pending status.
-
-### Previous update
-
-- Added a `stats` command with totals for pending, completed and high-priority tasks.
+Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
