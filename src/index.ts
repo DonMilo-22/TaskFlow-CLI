@@ -24,6 +24,7 @@ TaskFlow CLI
   clear-done
   rename <id> <new title>
   list-priority <low|medium|high>
+  recent [count]
   help
 `);
 }
@@ -104,6 +105,13 @@ switch (command) {
     const matches = tasks.filter(t => t.priority === priority);
     if (!matches.length) { console.log("No tasks with that priority."); break; }
     for (const t of matches) console.log(`${t.status === "done" ? "✓" : "○"} #${t.id} ${t.title}`);
+    break;
+  }
+  case "recent": {
+    const count = Math.max(1, Number(args[1]) || 5);
+    const recent = [...tasks].sort((a,b) => b.createdAt.localeCompare(a.createdAt)).slice(0, count);
+    if (!recent.length) { console.log("No tasks found."); break; }
+    for (const t of recent) console.log(`${t.status === "done" ? "✓" : "○"} #${t.id} [${t.priority}] ${t.title}`);
     break;
   }
   case "delete": {
