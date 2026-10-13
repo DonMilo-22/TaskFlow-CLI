@@ -77,6 +77,8 @@ Licencia: MIT.
 
 - `stats` now includes the completion percentage so progress is visible at a glance.
 
+- `stats` now includes the completion percentage so progress is visible at a glance.
+
 ## Historial
 
 Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
