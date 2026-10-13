@@ -61,7 +61,8 @@ switch (command) {
     const pending = tasks.filter(t => t.status === "pending").length;
     const done = tasks.filter(t => t.status === "done").length;
     const high = tasks.filter(t => t.priority === "high" && t.status === "pending").length;
-    console.log(`Tasks: ${tasks.length} | Pending: ${pending} | Done: ${done} | High priority pending: ${high}`);
+    const percent = tasks.length ? Math.round(done / tasks.length * 100) : 0;
+    console.log(`Tasks: ${tasks.length} | Pending: ${pending} | Done: ${done} (${percent}%) | High priority pending: ${high}`);
     break;
   }
   case "reopen": {
