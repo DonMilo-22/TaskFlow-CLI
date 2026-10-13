@@ -73,6 +73,10 @@ Licencia: MIT.
 
 - Added `recent [count]` to show the most recently created tasks, defaulting to five.
 
+## Actualización adicional 2026-10-12
+
+- `stats` now includes the completion percentage so progress is visible at a glance.
+
 ## Historial
 
 Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
