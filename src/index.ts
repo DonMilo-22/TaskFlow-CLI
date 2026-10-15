@@ -57,6 +57,13 @@ switch (command) {
     if (!task) { console.error("Task not found."); process.exitCode = 1; break; }
     task.status = "done"; save(tasks); console.log(`✓ Completed #${id}`); break;
   }
+  case "priority-summary": {
+    for (const priority of ["high", "medium", "low"] as Priority[]) {
+      const count = tasks.filter(t => t.priority === priority && t.status === "pending").length;
+      console.log(`${priority}: ${count} pending`);
+    }
+    break;
+  }
   case "stats": {
     const pending = tasks.filter(t => t.status === "pending").length;
     const done = tasks.filter(t => t.status === "done").length;
