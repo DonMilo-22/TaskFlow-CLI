@@ -115,6 +115,12 @@ switch (command) {
     for (const t of matches) console.log(`${t.status === "done" ? "✓" : "○"} #${t.id} ${t.title}`);
     break;
   }
+  case "oldest": {
+    const oldest = [...tasks].sort((a,b) => a.createdAt.localeCompare(b.createdAt))[0];
+    if (!oldest) console.log("No tasks found.");
+    else console.log(`Oldest task: #${oldest.id} [${oldest.priority}] ${oldest.title} (created ${oldest.createdAt})`);
+    break;
+  }
   case "recent": {
     const count = Math.max(1, Number(args[1]) || 5);
     const recent = [...tasks].sort((a,b) => b.createdAt.localeCompare(a.createdAt)).slice(0, count);
