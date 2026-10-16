@@ -25,6 +25,7 @@ TaskFlow CLI
   rename <id> <new title>
   list-priority <low|medium|high>
   recent [count]
+  oldest
   help
 `);
 }
