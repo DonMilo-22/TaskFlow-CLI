@@ -84,3 +84,7 @@ Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
 ## Actualización 2026-10-14
 
 - Added `priority-summary`, which counts pending tasks by high, medium, and low priority.
+
+## Actualización 2026-10-15
+
+- Added `oldest` to show the earliest-created task, including its ID, priority, title, and creation timestamp.
