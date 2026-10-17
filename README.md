@@ -11,6 +11,7 @@ Permite organizar pendientes con prioridad y conservarlos entre sesiones sin una
 - Buscar por título sin distinguir mayúsculas.
 - Consultar estadísticas y limpiar tareas completadas.
 - Persistencia en un archivo JSON local.
+- Exportación de tareas a CSV para abrirlas en una hoja de cálculo.
 
 ## Requisitos
 
@@ -44,6 +45,7 @@ Todos se ejecutan con `npm start -- <comando>` después de compilar.
 | `stats` | `stats` | Muestra totales y pendientes de prioridad alta. |
 | `delete <id>` | `delete 1` | Elimina la tarea. |
 | `clear-done` | `clear-done` | Elimina todas las tareas completadas. |
+| `export-csv` | `export-csv` | Exporta las tareas a `tasks-export.csv`. |
 | `help` | `help` | Muestra la ayuda. |
 
 ## Ejemplo de salida
@@ -88,3 +90,8 @@ Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
 ## Actualización 2026-10-15
 
 - Added `oldest` to show the earliest-created task, including its ID, priority, title, and creation timestamp.
+
+
+## Actualización 2026-10-16
+
+- Added `export-csv` to export all tasks, including their status and creation date, to a spreadsheet-friendly CSV file.
