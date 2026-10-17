@@ -116,6 +116,15 @@ switch (command) {
     for (const t of matches) console.log(`${t.status === "done" ? "✓" : "○"} #${t.id} ${t.title}`);
     break;
   }
+  case "export-csv": {
+    const csv = ["id,title,priority,status,createdAt", ...tasks.map(t => {
+      const escape = (value: string) => `"${String(value).replace(/"/g, '""')}"`;
+      return [t.id, t.title, t.priority, t.status, t.createdAt].map(escape).join(",");
+    })].join("\\n");
+    writeFileSync("tasks-export.csv", csv + "\\n", "utf8");
+    console.log(`✓ Exported ${tasks.length} task(s) to tasks-export.csv`);
+    break;
+  }
   case "oldest": {
     const oldest = [...tasks].sort((a,b) => a.createdAt.localeCompare(b.createdAt))[0];
     if (!oldest) console.log("No tasks found.");
