@@ -120,8 +120,8 @@ switch (command) {
     const csv = ["id,title,priority,status,createdAt", ...tasks.map(t => {
       const escape = (value: string) => `"${String(value).replace(/"/g, '""')}"`;
       return [t.id, t.title, t.priority, t.status, t.createdAt].map(escape).join(",");
-    })].join("\\n");
-    writeFileSync("tasks-export.csv", csv + "\\n", "utf8");
+    })].join("\n");
+    writeFileSync("tasks-export.csv", csv + "\n", "utf8");
     console.log(`✓ Exported ${tasks.length} task(s) to tasks-export.csv`);
     break;
   }
