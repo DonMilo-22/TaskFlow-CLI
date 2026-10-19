@@ -95,3 +95,16 @@ Consulta [CHANGELOG.md](CHANGELOG.md) para ver las actualizaciones.
 ## Actualización 2026-10-16
 
 - Added `export-csv` to export all tasks, including their status and creation date, to a spreadsheet-friendly CSV file.
+
+
+## Utilidad nueva: copia de seguridad
+
+Crea una copia con fecha y hora de tu archivo de tareas antes de hacer cambios importantes:
+
+```bash
+node scripts/backup-tasks.mjs
+# O indica otra ruta JSON:
+node scripts/backup-tasks.mjs ./tasks.json
+```
+
+Las copias se guardan en `backups/`; el script no modifica el archivo original.
