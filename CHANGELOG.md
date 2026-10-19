@@ -1,3 +1,8 @@
+
+
+### 2026-10-18
+
+- Added `scripts/backup-tasks.mjs` to create timestamped backups of the local task JSON without overwriting earlier copies.
 # Historial de cambios
 
 Entradas originales conservadas en inglés. Las fechas corresponden al historial existente; la última entrada no tenía fecha registrada.
