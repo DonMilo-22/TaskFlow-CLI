@@ -1,5 +1,10 @@
 
 
+### 2026-10-19
+
+- Added `scripts/task-summary.mjs` to report total, completed, pending and completion percentage for a task JSON file.
+
+
 ### 2026-10-18
 
 - Added `scripts/backup-tasks.mjs` to create timestamped backups of the local task JSON without overwriting earlier copies.
