@@ -108,3 +108,14 @@ node scripts/backup-tasks.mjs ./tasks.json
 ```
 
 Las copias se guardan en `backups/`; el script no modifica el archivo original.
+
+
+## New utility: task summary
+
+Get a quick count of completed and pending tasks from a JSON array (or an object with a `tasks` array):
+
+```bash
+node scripts/task-summary.mjs tasks.json
+```
+
+The summary recognizes `done: true` or `completed: true` and reports the completion percentage without modifying the input file.
