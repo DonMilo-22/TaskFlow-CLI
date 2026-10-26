@@ -12,6 +12,7 @@ Permite organizar pendientes con prioridad y conservarlos entre sesiones sin una
 - Consultar estadísticas y limpiar tareas completadas.
 - Persistencia en un archivo JSON local.
 - Exportación de tareas a CSV para abrirlas en una hoja de cálculo.
+- Copias de seguridad JSON con fecha y hora.
 
 ## Requisitos
 
@@ -119,3 +120,12 @@ node scripts/task-summary.mjs tasks.json
 ```
 
 The summary recognizes `done: true` or `completed: true` and reports the completion percentage without modifying the input file.
+
+
+## Actualización 2026-10-25
+
+- Added the `backup` command to save a timestamped JSON snapshot of the current tasks without changing the active task file.
+
+```bash
+npm start -- backup
+```
