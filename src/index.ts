@@ -26,6 +26,7 @@ TaskFlow CLI
   list-priority <low|medium|high>
   recent [count]
   oldest
+  backup
   help
 `);
 }
@@ -114,6 +115,12 @@ switch (command) {
     const matches = tasks.filter(t => t.priority === priority);
     if (!matches.length) { console.log("No tasks with that priority."); break; }
     for (const t of matches) console.log(`${t.status === "done" ? "✓" : "○"} #${t.id} ${t.title}`);
+    break;
+  }
+  case "backup": {
+    const file = "tasks-backup-" + new Date().toISOString().replace(/[:.]/g, "-") + ".json";
+    writeFileSync(file, JSON.stringify(tasks, null, 2), "utf8");
+    console.log("✓ Backup saved to " + file);
     break;
   }
   case "export-csv": {
