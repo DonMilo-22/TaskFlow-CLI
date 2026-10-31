@@ -27,6 +27,7 @@ TaskFlow CLI
   recent [count]
   oldest
   backup
+  count
   help
 `);
 }
