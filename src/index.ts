@@ -117,7 +117,7 @@ switch (command) {
     for (const t of matches) console.log(`${t.status === "done" ? "✓" : "○"} #${t.id} ${t.title}`);
     break;
   }
-  case "backup": {
+  case "count": {\n    for (const status of ["pending", "done"] as Status[]) {\n      const group = tasks.filter(t => t.status === status);\n      console.log(`${status}: ${group.length} | high: ${group.filter(t => t.priority === "high").length} | medium: ${group.filter(t => t.priority === "medium").length} | low: ${group.filter(t => t.priority === "low").length}`);\n    }\n    break;\n  }\n  case "backup": {
     const file = "tasks-backup-" + new Date().toISOString().replace(/[:.]/g, "-") + ".json";
     writeFileSync(file, JSON.stringify(tasks, null, 2), "utf8");
     console.log("✓ Backup saved to " + file);
