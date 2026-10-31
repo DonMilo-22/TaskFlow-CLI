@@ -129,3 +129,7 @@ The summary recognizes `done: true` or `completed: true` and reports the complet
 ```bash
 npm start -- backup
 ```
+
+## Actualización 2026-10-30
+
+- `count` now prints pending and completed task totals, each split by high, medium, and low priority.
