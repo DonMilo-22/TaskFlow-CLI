@@ -133,3 +133,7 @@ npm start -- backup
 ## Actualización 2026-10-30
 
 - `count` now prints pending and completed task totals, each split by high, medium, and low priority.
+
+## Actualización 2026-11-02
+
+- Added `archive` to move completed tasks into `tasks-archive.json` and remove them from the active task list. Existing archived tasks are preserved. Run `npm start -- archive`.
