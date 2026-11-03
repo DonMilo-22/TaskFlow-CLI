@@ -28,6 +28,7 @@ TaskFlow CLI
   oldest
   backup
   count
+  archive
   help
 `);
 }
@@ -125,7 +126,17 @@ switch (command) {
     }
     break;
   }
-  case "archive": {\n    const completed = tasks.filter(t => t.status === "done");\n    if (!completed.length) { console.log("No completed tasks to archive."); break; }\n    const archiveFile = "tasks-archive.json";\n    const previous = existsSync(archiveFile) ? JSON.parse(readFileSync(archiveFile, "utf8")) as Task[] : [];\n    writeFileSync(archiveFile, JSON.stringify([...previous, ...completed], null, 2), "utf8");\n    save(tasks.filter(t => t.status !== "done"));\n    console.log(`✓ Archived ${completed.length} completed task(s) to ${archiveFile}`);\n    break;\n  }\n  case "backup": {
+  case "archive": {
+    const completed = tasks.filter(t => t.status === "done");
+    if (!completed.length) { console.log("No completed tasks to archive."); break; }
+    const archiveFile = "tasks-archive.json";
+    const previous = existsSync(archiveFile) ? JSON.parse(readFileSync(archiveFile, "utf8")) as Task[] : [];
+    writeFileSync(archiveFile, JSON.stringify([...previous, ...completed], null, 2), "utf8");
+    save(tasks.filter(t => t.status !== "done"));
+    console.log(`✓ Archived ${completed.length} completed task(s) to ${archiveFile}`);
+    break;
+  }
+  case "backup": {
     const file = "tasks-backup-" + new Date().toISOString().replace(/[:.]/g, "-") + ".json";
     writeFileSync(file, JSON.stringify(tasks, null, 2), "utf8");
     console.log("✓ Backup saved to " + file);
