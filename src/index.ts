@@ -125,7 +125,7 @@ switch (command) {
     }
     break;
   }
-  case "backup": {
+  case "archive": {\n    const completed = tasks.filter(t => t.status === "done");\n    if (!completed.length) { console.log("No completed tasks to archive."); break; }\n    const archiveFile = "tasks-archive.json";\n    const previous = existsSync(archiveFile) ? JSON.parse(readFileSync(archiveFile, "utf8")) as Task[] : [];\n    writeFileSync(archiveFile, JSON.stringify([...previous, ...completed], null, 2), "utf8");\n    save(tasks.filter(t => t.status !== "done"));\n    console.log(`✓ Archived ${completed.length} completed task(s) to ${archiveFile}`);\n    break;\n  }\n  case "backup": {
     const file = "tasks-backup-" + new Date().toISOString().replace(/[:.]/g, "-") + ".json";
     writeFileSync(file, JSON.stringify(tasks, null, 2), "utf8");
     console.log("✓ Backup saved to " + file);
