@@ -164,6 +164,13 @@ switch (command) {
     for (const t of recent) console.log(`${t.status === "done" ? "✓" : "○"} #${t.id} [${t.priority}] ${t.title}`);
     break;
   }
+  case "priority-all": {
+    for (const status of ["pending", "done"] as Status[]) {
+      const group = tasks.filter(t => t.status === status);
+      console.log(`${status}: high ${group.filter(t => t.priority === "high").length} | medium ${group.filter(t => t.priority === "medium").length} | low ${group.filter(t => t.priority === "low").length}`);
+    }
+    break;
+  }
   case "delete": {
     const id = Number(args[1]);
     const next = tasks.filter(t => t.id !== id);
