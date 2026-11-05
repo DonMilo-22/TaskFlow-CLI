@@ -29,6 +29,7 @@ TaskFlow CLI
   backup
   count
   archive
+  priority-all
   help
 `);
 }
