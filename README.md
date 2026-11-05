@@ -137,3 +137,7 @@ npm start -- backup
 ## Actualización 2026-11-02
 
 - Added `archive` to move completed tasks into `tasks-archive.json` and remove them from the active task list. Existing archived tasks are preserved. Run `npm start -- archive`.
+
+## Actualización 2026-11-04
+
+- Added `priority-all` to compare high, medium, and low priority counts for both pending and completed tasks. Run `npm start -- priority-all`.
